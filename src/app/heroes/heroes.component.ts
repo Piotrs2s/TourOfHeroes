@@ -11,12 +11,15 @@ import {HeroService} from '../hero.service';
 export class HeroesComponent implements OnInit {
 
   heroes : Hero[];
+
   
   //Create heroService instance 
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     this.getHeroes();
+
+    this.heroes = this.sortHeroes(this.heroes);
   }
 
 //get list of heroes
@@ -25,7 +28,31 @@ export class HeroesComponent implements OnInit {
     .subscribe(heroes => this.heroes = heroes);
   }
 
- //place for initialization logic 
+  sortHeroes(arr: Hero[]): Hero[]{
+    arr.sort(
+      function(a, b) {
+         if (a.id !== b.id) {
+          return a.name > b.name ? 1 : -1;
+         }
+         return a.id > b.id ? 1 : -1;
+      });
+
+      return arr;
+  //   arr.sort(function(a, b){
+  //     var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+  //     if (nameA > nameB) //sort string ascending
+  //         return -1 
+  //     if (nameA < nameB)
+  //         return 1
+  //     return 0 //default return value (no sorting)
+  // })
+  // return arr;
+    
+  }
+
+  
+ 
+ 
 
 
 }

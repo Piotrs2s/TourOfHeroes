@@ -27,5 +27,20 @@ export class HeroService {
     this.messageService.add(`HeroService: fetched hero id=${id}`);
     return of(HEROES.find(hero => hero.id === id));
   }
+
+  // sortHeroes(arr: Hero[]): Hero[]{
+
+  //   arr.sort(function(a, b){
+  //     var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+  //     if (nameA < nameB) //sort string ascending
+  //         return -1 
+  //     if (nameA > nameB)
+  //         return 1
+  //     return 0 //default return value (no sorting)
+  // })
+    
+  // return arr;
+    
+  // }
   
 }
